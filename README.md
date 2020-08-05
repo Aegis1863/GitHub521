@@ -48,3 +48,6 @@
 	# GitHub Host End
 	```
 2. 给予程序hosts写入权限有一定的风险，如果电脑中存在木马程序，很容易对hosts文件进行修改
+
+## 声明
+本项目在程序设计上借鉴了[GitHub520项目](https://github.com/521xueweihan/GitHub520)
