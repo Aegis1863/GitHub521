@@ -73,10 +73,11 @@ def get_ip(session: requests.session, raw_url: str):
 def writehosts(old_hosts, content, hostsfile):
     #删除老hosts中的ip
     for line in range(len(old_hosts)):
-        if old_hosts[line] == '# GitHub Host Start\n':
+        if '# GitHub Host Start' in old_hosts[line]:
             startline = line
-        elif old_hosts[line] == '# GitHub Host End':
+        if '# GitHub Host End' in old_hosts[line]:
             endline = line
+            break
     #得到起止行数startline，endline
     for i in range(startline,endline+1)[::-1]:
         del old_hosts[i]
