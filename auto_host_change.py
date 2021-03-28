@@ -4,9 +4,10 @@ Created on Wed Aug  5 13:02:56 2020
 
 @author: LiSunBowen
 """
-
-import requests
 import re
+import os
+import requests
+
 from collections import Counter
 
 RAW_URL = [
@@ -90,6 +91,9 @@ def writehosts(old_hosts, content, hostsfile):
         fd.write(new_hosts)
     print('复写成功')
 
+def flushdns():
+    os.system('ipconfig /flushdns')
+
 def main():
     session = requests.session()
     content = ""
@@ -103,6 +107,8 @@ def main():
     hostsfile = "C:\\Windows\\System32\\drivers\\etc\\hosts"
     old_hosts = gethosts(hostsfile)
     writehosts(old_hosts, hosts_content, hostsfile)
+    # 刷新DNS缓存
+    flushdns()
 
 if __name__ == "__main__":
     main()
